@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float zRange = 10;
     public Vector3 moveDirection;
     public GameObject projectilePrefab;
+    public Collider playerCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +34,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
-        
+
         }
+
+        OnTriggerEnter(playerCollider);
+
+        
 
     }
 
@@ -68,4 +74,15 @@ public class PlayerController : MonoBehaviour
         moveDirection = new Vector3(horizontalInput, 0, verticalInput);
         transform.Translate(moveDirection.normalized * speed * Time.deltaTime);
     }
+    public void OnTriggerEnter(Collider other) 
+    {
+        if (other.CompareTag("Animal")) 
+        {
+            Debug.Log("Player Death");
+        
+        
+        
+        }
+    }
+   
 }
