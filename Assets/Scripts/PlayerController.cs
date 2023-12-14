@@ -16,10 +16,13 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDirection;
     public GameObject projectilePrefab;
     public Collider playerCollider;
+    public int playerLives;
+    public int playerScore;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerScore = 0;
+        playerLives = 3;
     }
 
     // Update is called once per frame
@@ -78,11 +81,15 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Animal")) 
         {
-            Debug.Log("Player Death");
+            playerLives--;
+            Debug.Log(playerLives + " lives left");
+
         
         
         
         }
+        if (playerLives == 0) { Debug.Log("GAME OVER");
+        Destroy(this.gameObject); }
     }
    
 }

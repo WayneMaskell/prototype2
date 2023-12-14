@@ -3,21 +3,27 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MoveFoward : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    public float speed = 40f;
-    public int playerScore;
+    public int playerLives = 0;
+    public int playerScore = 0;
     
+
     // Start is called before the first frame update
     void Start()
     {
+           
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        Debug.Log(playerScore); 
+        
     }
+
     
+
+
 }
